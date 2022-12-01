@@ -24,6 +24,8 @@ Los comandos necesarios para la creación de una máquina virtual con vagrant so
 
 - vagrant init: nos crea un fichero predeterminado. Lo utilizaré como inicio para crear mi máquina virtual.
 
+Configuracion maquina vagrant:
+
 ![](Imagenes/conf)
 
 He creado tres discos virtuales los cuales me servirán para la creación del Raid5.
@@ -35,6 +37,8 @@ He creado tres discos virtuales los cuales me servirán para la creación del Ra
 - vagrant destroy: Elimina la máquina.
 
 ## Creación de un raid-5
+
+
 
 ![](Imagenes/raid5)
 
