@@ -16,7 +16,7 @@ Es el turno de crear el entorno donde realizaremos la práctica. Vagrant utiliza
 
 Una vez ejecutada la sentencia nos pedirá que administrador de máquinas virtuales deseamos. En mi caso he escogido virtual box.
 
-![](Imagenes/box)
+![](Imagenes/box.png)
 
 Donde debian/bullseye64 es la imagen que añadimos.
 
@@ -28,7 +28,7 @@ Configuracion maquina vagrant:
 
 ![](Imagenes/conf)
 
-He creado tres discos virtuales los cuales me servirán para la creación del Raid5.
+He creado cuatro discos virtuales los cuales me servirán para la creación del Raid5.
 
 - vagrant up: Nos ejecutará la máquina.
 
@@ -36,9 +36,29 @@ He creado tres discos virtuales los cuales me servirán para la creación del Ra
 
 - vagrant destroy: Elimina la máquina.
 
+![](Imagenes/inicio)
+
 ## Creación de un raid-5
 
+Para conectarnos a la máquina virtual debemos utilizar el siguiente comando
 
+``vagrant ssh``
+
+Para ponernos como root
+
+``sudo su``
+
+A conituación debemos visualizar los discos para crear el raid5.
+
+![](Imagenes/discos)
+
+Una vez hemos conocido la nomenclatura de los discos podemos crear el raid 5.(Los discos que utilizare en el raid son sdb,sdc,sdd,sde). Pero antes será necesario instalar el paquete mdadm
+
+``apt update && apt upgarde && apt install mdadm``
+
+``mdadm --create /dev/md1 --level5 --raid-devices=3 /dev/sdb /dev/sdc /dev/sdd --spare-devices=1 /dev/sde``
+
+El raid 5 utilizará tres discos para hacer las copias del raid y uno que funcionará como hot-spare. Es decir, en caso de fallo de un disco el hot-spare lo substituirá.
 
 ![](Imagenes/raid5)
 
